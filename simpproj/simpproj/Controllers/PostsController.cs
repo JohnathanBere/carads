@@ -10,7 +10,7 @@ namespace simpproj.Controllers
     {
         public ActionResult Index()
         {
-            return Content("Fuck off mate");
+            return View();
         }
     }
 }
