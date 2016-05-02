@@ -1,4 +1,7 @@
-﻿using simpproj.Infrastructure;
+﻿using NHibernate.Linq;
+using simpproj.Areas.Admin.ViewModels;
+using simpproj.Infrastructure;
+using simpproj.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,10 @@ namespace simpproj.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new UsersIndex
+            {
+                Users = Database.Session.Query<User>().ToList()
+            });
         }
     }
 }
