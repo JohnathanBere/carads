@@ -116,40 +116,15 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PG-Blocks\font-awesome.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\materialize\materialize.css" />
-    <Content Include="fonts\Material-Design-Icons.svg" />
     <Content Include="Content\PG-Blocks\blocks.css" />
     <Content Include="Content\PG-Blocks\plugins.css" />
     <Content Include="Content\PG-Blocks\style-library-1.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\Roboto-Thin.woff2" />
-    <Content Include="fonts\Roboto-Thin.woff" />
-    <Content Include="fonts\Roboto-Thin.ttf" />
-    <Content Include="fonts\Roboto-Thin.eot" />
-    <Content Include="fonts\Roboto-Regular.woff2" />
-    <Content Include="fonts\Roboto-Regular.woff" />
-    <Content Include="fonts\Roboto-Regular.ttf" />
-    <Content Include="fonts\Roboto-Regular.eot" />
-    <Content Include="fonts\Roboto-Medium.woff2" />
-    <Content Include="fonts\Roboto-Medium.woff" />
-    <Content Include="fonts\Roboto-Medium.ttf" />
-    <Content Include="fonts\Roboto-Medium.eot" />
-    <Content Include="fonts\Roboto-Light.woff2" />
-    <Content Include="fonts\Roboto-Light.woff" />
-    <Content Include="fonts\Roboto-Light.ttf" />
-    <Content Include="fonts\Roboto-Light.eot" />
-    <Content Include="fonts\Roboto-Bold.woff2" />
-    <Content Include="fonts\Roboto-Bold.woff" />
-    <Content Include="fonts\Roboto-Bold.ttf" />
-    <Content Include="fonts\Roboto-Bold.eot" />
-    <Content Include="fonts\Material-Design-Icons.woff2" />
-    <Content Include="fonts\Material-Design-Icons.woff" />
-    <Content Include="fonts\Material-Design-Icons.ttf" />
-    <Content Include="fonts\Material-Design-Icons.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -160,6 +135,10 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -186,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\RoleProvider.cs" />
+    <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Auth.cs" />
   </ItemGroup>
@@ -206,9 +186,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Posts\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\Users\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
