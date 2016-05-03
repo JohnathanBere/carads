@@ -9,10 +9,7 @@ namespace simpproj.Infrastructure
     {
         public override string[] GetRolesForUser(string username)
         {
-            if (username == "john")
-                return new string[] {"admin"};
-
-            return new string[] { };
+            return Auth.User.Roles.Select(role => role.Name).ToArray();
         }
 
         public override string ApplicationName

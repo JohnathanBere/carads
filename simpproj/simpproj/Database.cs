@@ -29,6 +29,7 @@ namespace simpproj
             // Add mappings
             var mapper = new ModelMapper();
             mapper.AddMapping<UserMap>();
+            mapper.AddMapping<RoleMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
             // create the session factory
