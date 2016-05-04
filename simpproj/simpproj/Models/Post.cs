@@ -1,9 +1,9 @@
-﻿using NHibernate.Mapping.ByCode;
-using NHibernate.Mapping.ByCode.Conformist;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NHibernate.Mapping.ByCode;
+using NHibernate.Mapping.ByCode.Conformist;
 
 namespace simpproj.Models
 {
@@ -48,7 +48,7 @@ namespace simpproj.Models
                 x.NotNullable(true);
             });
 
-            Property(x => x.UpdatedAt, x => x.Column("update_at"));
+            Property(x => x.UpdatedAt, x => x.Column("updated_at"));
             Property(x => x.DeletedAt, x => x.Column("deleted_at"));
 
             Bag(x => x.Tags, x =>
