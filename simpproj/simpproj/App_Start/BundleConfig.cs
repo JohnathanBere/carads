@@ -44,6 +44,10 @@ namespace simpproj
                     "~/Areas/Admin/Scripts/Forms.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/scripts/admin/post").Include(
+                    "~/Areas/Admin/Scripts/PostEditor.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/scripts").Include(
                     "~/Scripts/jquery-{version}.js",
                     "~/Scripts/jquery-{version}.intellisense.js",
