@@ -1,0 +1,52 @@
+﻿@model simpproj.Areas.Admin.ViewModels.PostsForm
+@{
+    ViewBag.Title = "Form";
+}
+<h1>@(Model.IsNew ? "Create Post" : "Update Post")</h1>
+
+<!-- Specify action name and controller name otherwise form begins to post to itself -->
+@using (Html.BeginForm("Form", "Posts"))
+{
+    // If the post in question is not a new one, a parameter representing the current post id is declared
+    // For the purpose of updating the current post.
+    if(!Model.IsNew)
+    {
+        @Html.HiddenFor(f => f.PostId)
+    }
+
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-8">
+            @Html.ValidationSummary()
+            <div class="form-group">
+                @Html.LabelFor(f => f.Title)
+                @Html.TextBoxFor(f => f.Title, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Slug)
+                @Html.TextBoxFor(f => f.Slug, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Content)
+                @Html.TextAreaFor(f => f.Content, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Post Actions
+                </div>
+
+                <div class="panel-body">
+                    <input type="submit" value="@(Model.IsNew ? "Publish Post" : "Update Post")" class="btn btn-success btn-sm" />
+                    <a href="@Url.Action("Index")">Or cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
