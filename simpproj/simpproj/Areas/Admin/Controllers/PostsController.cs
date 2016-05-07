@@ -101,5 +101,43 @@ namespace simpproj.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult Trash(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+
+            if (post == null)
+                HttpNotFound();
+
+            post.DeletedAt = DateTime.UtcNow;
+            Database.Session.Update(post);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+
+            if (post == null)
+                HttpNotFound();
+
+            Database.Session.Delete(post);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Restore(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+
+            if (post == null)
+                HttpNotFound();
+
+            post.DeletedAt = null;
+            Database.Session.Update(post);
+            return RedirectToAction("Index");
+        }
     }
 }

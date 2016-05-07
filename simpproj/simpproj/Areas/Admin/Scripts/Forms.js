@@ -1,5 +1,5 @@
-﻿$(document).ready(function () {
-    $("a[data-post]").click(function (e) {
+﻿$(document).ready(function() {
+    $("a[data-post]").click(function(e) {
         e.preventDefault();
 
         var $this = $(this);
@@ -14,7 +14,27 @@
         $("<form>")
             .attr("method", "post")
             .attr("action", $this.attr("href"))
+            .append(antiForgeryInput)
             .appendTo(document.body)
             .submit();
     });
+
+    $("[data-slug]").each(function() {
+        var $this = $(this);
+        var $sendSlugFrom = $($this.data("slug"));
+
+        // Code is executed everytime a letter is entered on pc keyboard
+        $sendSlugFrom.keyup(function() {
+            var slug = $sendSlugFrom.val();
+            slug = slug.replace(/[^a-zA-Z0-9\s]/g, "");
+            slug = slug.toLowerCase();
+            slug = slug.replace(/\s+/g, "-");
+
+            if (slug.charAt(slug.length - 1) == "-")
+                slug = slug.substr(0, slug.length - 1);
+
+            $this.val(slug);
+        });
+    });
+
 });
