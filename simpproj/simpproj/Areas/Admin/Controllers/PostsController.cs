@@ -23,10 +23,22 @@ namespace simpproj.Areas.Admin.Controllers
         public ActionResult Index(int page = 1)
         {
             var totalPostCount = Database.Session.Query<Post>().Count();
-            var currentPostPage = Database.Session.Query<Post>()
-                .OrderByDescending(c => c.CreatedAt)
+
+            var baseQuery = Database.Session.Query<Post>().OrderByDescending(f => f.CreatedAt);
+
+            // Assortment of posts by post ID
+            var postIds = baseQuery
                 .Skip((page - 1) * PostsPerPage)
                 .Take(PostsPerPage)
+                .Select(p => p.Id)
+                .ToArray();
+
+            // Pagination of assorted posts
+            var currentPostPage = baseQuery
+                .Where(p => postIds.Contains(p.Id))
+                .OrderByDescending(c => c.CreatedAt)
+                .FetchMany(f => f.Tags)
+                .Fetch(f => f.User)
                 .ToList();
 
             return View(new PostsIndex
