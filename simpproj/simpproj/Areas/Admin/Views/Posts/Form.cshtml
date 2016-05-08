@@ -89,6 +89,10 @@
 
 @section Scripts
 {
-    @Scripts.Render("~/scripts/admin/post")    
+    @Scripts.Render("~/scripts/admin/post")
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("Content")
+    </script>    
 }
 
