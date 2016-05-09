@@ -1,8 +1,9 @@
-﻿
+﻿@model simpproj.ViewModels.PostsIndex
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Posts";
 }
 
-<h2>Index</h2>
-
-<p>Login <a href="@Url.RouteUrl("login")">here</a> you bastard.</p>
+<div class="container">
+    @Html.Partial("_Posts", Model.Posts)
+</div>
