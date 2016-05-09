@@ -32,6 +32,10 @@ namespace simpproj
             mapper.AddMapping<RoleMap>();
             mapper.AddMapping<TagMap>();
             mapper.AddMapping<PostMap>();
+            mapper.AddMapping<AdMap>();
+            mapper.AddMapping<CategoryMap>();
+            mapper.AddMapping<WishlistMap>();
+            mapper.AddMapping<WishlistItemMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
             // create the session factory

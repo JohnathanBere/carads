@@ -11,7 +11,11 @@ namespace simpproj.Migrations
             Create.Table("users")
                 .WithColumn("id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("username").AsString(128)
+                .WithColumn("firstname").AsString(128)
+                .WithColumn("lastname").AsString(128)
                 .WithColumn("email").AsCustom("VARCHAR(256)")
+                .WithColumn("phonenumber").AsCustom("VARCHAR(256)")
+                .WithColumn("address").AsCustom("VARCHAR(256)")
                 .WithColumn("password_hash").AsString(128);
 
             Create.Table("roles")

@@ -1,0 +1,27 @@
+﻿@model simpproj.Infrastructure.PagedData<simpproj.Models.Ad>
+
+@foreach (var ad in Model)
+{
+    @Html.Partial("_Ad", ad)
+}
+<ul class="list-unstyled">
+    @if (Model.HasPreviousPage)
+    {
+        <li class="pull-left">
+            <a href="@Url.Action(null, new { page = Model.PreviousPage })" class="btn btn-primary">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Newer Posts
+            </a>
+        </li>
+    }
+
+    @if (Model.HasNextPage)
+    {
+        <li class="pull-right">
+            <a href="@Url.Action(null, new { page = Model.NextPage })" class="btn btn-primary">
+                Older posts
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        </li>
+    }
+</ul>

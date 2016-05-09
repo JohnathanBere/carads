@@ -12,7 +12,6 @@ namespace simpproj
     {
         protected void Application_Start()
         {
-            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);

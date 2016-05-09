@@ -1,0 +1,6 @@
+﻿@model simpproj.ViewModels.AdsShow
+@{
+    ViewBag.Title = "Viewing " + Model.Ad.Title;
+}
+
+@Html.Partial("_Ad", Model.Ad)

@@ -17,7 +17,11 @@ namespace simpproj.Models
 
         public virtual int Id { get; set; }
         public virtual string Username { get; set; }
+        public virtual string Firstname { get; set; }
+        public virtual string Lastname { get; set; }
+        public virtual string Phonenumber { get; set; }
         public virtual string Email { get; set; }
+        public virtual string Address { get; set; }
         public virtual string PasswordHash { get; set; }
 
         public virtual IList<Role> Roles { get; set; }
@@ -47,6 +51,10 @@ namespace simpproj.Models
             Id(x => x.Id, x => x.Generator(Generators.Identity));
 
             Property(x => x.Username, x => x.NotNullable(true));
+            Property(x => x.Firstname, x => x.NotNullable(true));
+            Property(x => x.Lastname, x => x.NotNullable(true));
+            Property(x => x.Phonenumber, x => x.NotNullable(true));
+            Property(x => x.Address, x => x.NotNullable(true));
             Property(x => x.Email, x => x.NotNullable(true));
 
             Property(x => x.PasswordHash, x => 

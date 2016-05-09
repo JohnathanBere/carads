@@ -1,0 +1,14 @@
+﻿@model simpproj.ViewModels.AdsCategory
+
+@{
+    ViewBag.Title = Model.Category.Name;
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        Showing posts tagged with <strong>@Model.Category.Name</strong>
+        <a href="@Url.RouteUrl("Home")" class="pull-right">Show all</a>
+    </div>
+</div>
+
+@Html.Partial("_Ads", Model.Ads)

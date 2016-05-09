@@ -1,0 +1,59 @@
+﻿<!-- Strongly typed model -->
+@model simpproj.ViewModels.UsersForm
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Login</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Firstname)
+                @Html.EditorFor(x => x.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Lastname)
+                @Html.EditorFor(x => x.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Phonenumber)
+                @Html.EditorFor(x => x.Phonenumber, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email)
+                @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Address)
+                @Html.EditorFor(x => x.Address, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Username)
+                @Html.EditorFor(x => x.Username, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password_Confirmation)
+                @Html.EditorFor(x => x.Password_Confirmation, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        }
+    </div>
+</div>
