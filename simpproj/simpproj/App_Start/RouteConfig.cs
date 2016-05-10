@@ -14,6 +14,7 @@ namespace simpproj
         {
             var namespaces = new[] { typeof(PostsController).Namespace};
             var anamespaces = new[] { typeof(AdsController).Namespace };
+            var authnamespaces = new[] { typeof(AuthController).Namespace };
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("ActualCategory", "category/{idAndSlug}", new { controller = "Ads", action = "Category"}, anamespaces);
@@ -30,8 +31,8 @@ namespace simpproj
 
             routes.MapRoute("Login", "login", new { controller = "Auth", action = "Login" }, namespaces);
 
-            routes.MapRoute("Register", "register", new { controller = "Auth", action = "Register" }, namespaces);
-            routes.MapRoute("Update", "update/{id}", new { controller = "Auth", action = "Update" }, namespaces);
+            routes.MapRoute("Register", "register", new { controller = "Auth", action = "Register" }, authnamespaces);
+            routes.MapRoute("Update", "update/{id}", new { controller = "Auth", action = "Update" }, authnamespaces);
 
             routes.MapRoute("Home", "", new { controller = "Posts", action = "Index" }, namespaces);
             routes.MapRoute("Ads", "ads", new { controller = "Ads", action = "Index" }, anamespaces);

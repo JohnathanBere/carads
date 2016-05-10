@@ -47,70 +47,108 @@ namespace simpproj.Controllers
             return RedirectToRoute("home");
         }
 
-
         public ActionResult Register()
         {
-            return View("Register", new UsersForm
+            return View(new UsersNew
             {
-                IsNew = true
             });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Register(UsersNew form)
+        {
+            var user = new User();
+
+            if (Database.Session.Query<User>().Any(u => u.Username == form.Username))
+                ModelState.AddModelError("Username", "Username must be unique");
+
+            if (!ModelState.IsValid)
+                return View(form);
+
+            user.Email = form.Email;
+            user.Username = form.Username;
+            user.Firstname = form.Firstname;
+            user.Lastname = form.Lastname;
+            user.Phonenumber = form.Phonenumber;
+            user.SetPassword(form.Password);
+            user.Address = form.Address;
+
+            user.SetPassword(form.Password);
+
+            Database.Session.Save(user);
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Update(int id)
         {
             var user = Database.Session.Load<User>(id);
-
             if (user == null)
-                HttpNotFound();
+                return HttpNotFound();
 
-            return View("Update", new UsersForm
+            return View(new UsersEdit
             {
-                IsNew = false,
-                UserId = id,
                 Username = user.Username,
                 Firstname = user.Firstname,
                 Lastname = user.Lastname,
                 Email = user.Email,
-                Address = user.Address,
-                Phonenumber = user.Phonenumber
+                Phonenumber = user.Phonenumber,
+                Address = user.Address
             });
         }
 
-        [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
-        public ActionResult Form(UsersForm form)
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Update(int id, UsersEdit form)
         {
-            form.IsNew = form.UserId == null;
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+
+            if (Database.Session.Query<User>().Any(u => u.Username == form.Username && u.Id != id))
+                ModelState.AddModelError("Username", "Username must be unique");
 
             if (!ModelState.IsValid)
                 return View(form);
 
-            User user;
-            if (form.IsNew)
-            {
-                user = new User();
-            }
-            else
-            {
-                user = Database.Session.Load<User>(form.UserId);
-
-                if (user == null)
-                    return HttpNotFound();
-            }
-
-            // Model is binded to the form based on the entries on the latter mentioned
             user.Username = form.Username;
+            user.Email = form.Email;
             user.Firstname = form.Firstname;
             user.Lastname = form.Lastname;
-            user.Address = form.Address;
             user.Phonenumber = form.Phonenumber;
-            user.Email = form.Email;
+            user.Address = form.Address;
+            Database.Session.Update(user);
 
-            FormsAuthentication.SetAuthCookie(user.Username, true);
+            return RedirectToAction("index");
+        }
 
-            // Utilise ORM library for the create or update of a user.
-            Database.Session.SaveOrUpdate(user);
+        public ActionResult ResetPassword(int id)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
 
-            return RedirectToAction("Index");
+            return View(new UsersResetPassword
+            {
+                Username = user.Username
+            });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(int id, UsersResetPassword form)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+
+            form.Username = user.Username;
+
+            if (!ModelState.IsValid)
+                return View(form);
+
+            user.SetPassword(form.Password);
+            Database.Session.Update(user);
+
+            return RedirectToAction("index");
         }
 
 

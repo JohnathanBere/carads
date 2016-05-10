@@ -498,6 +498,7 @@
     <Content Include="Views\Ads\Show.cshtml" />
     <Content Include="Views\Ads\Category.cshtml" />
     <Content Include="Views\Ads\Form.cshtml" />
+    <Content Include="Views\Auth\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

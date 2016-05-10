@@ -57,7 +57,8 @@ namespace simpproj
                     "~/Scripts/PG-Blocks/bskit-scripts.js",
                     "~/Scripts/PG-Blocks/html5shiv.js",
                     "~/Scripts/PG-Blocks/plugins.js",
-                    "~/Scripts/PG-Blocks/respond.min.js"
+                    "~/Scripts/PG-Blocks/respond.min.js",
+                    "~/Areas/Admin/Scripts/Forms.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizer").Include(

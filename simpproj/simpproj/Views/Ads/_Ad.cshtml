@@ -3,10 +3,7 @@
 <article>
     <h1><a href="@Url.RouteUrl("Ad", new { Model.Id, Model.Slug })">@Model.Title</a></h1>
     <div>
-        @Html.Raw(Model.Content)
-    </div>
-    <div class="table table-responsive">
-        <table class="table-striped">
+        <table class="table table-responsivetable-striped">
             <thead>
                 <tr>
                     <th>Make</th>
@@ -30,13 +27,6 @@
                     <td>@Model.Price</td>
                     <td>@Model.RegistrationYear</td>
                     <td>@Model.Location</td>
-                    <td>
-                        <div class="btn-group btn-group-xs">
-                            <a href="@Url.Action("edit", new { Model.Id })" class="btn btn-xs btn-primary">
-                                <i class="glyphicon glyphicon-edit"></i> edit
-                            </a>
-                        </div>
-                    </td>
                 </tr>
             </tbody>
         </table>

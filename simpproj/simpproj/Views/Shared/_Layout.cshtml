@@ -34,10 +34,13 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Items -->
+                        <li><a href="@Url.RouteUrl("ads")">Ads</a></li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li><a href="#">Hey @User.Identity.Name</a></li>
-                                <li><a href="@Url.RouteUrl("logout")">Logout</a></li>
+                            <li><a href="@Url.Action("new", "Ads")">Post an Ad</a></li>    
+                            <li><a href="@Url.RouteUrl("logout")">Logout</a></li>
+                                <li><a href="@Url.RouteUrl("update")">Update</a></li>
 
                             if (User.IsInRole("admin"))
                             {
@@ -48,6 +51,7 @@
                         else
                         {
                             <li><a href="@Url.RouteUrl("login")">Login</a></li>
+                            <li><a href="@Url.RouteUrl("register")">Register</a></li>
                         }
                     </ul>
                     <!--//nav-->
